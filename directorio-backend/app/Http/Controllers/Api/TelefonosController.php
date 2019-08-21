@@ -15,7 +15,7 @@ class TelefonosController extends Controller
      */
     public function index()
     {
-        //
+        return Telefono::all();
     }
 
     /**
@@ -36,7 +36,13 @@ class TelefonosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $telefono = Telefono::firstOrCreate([
+            'contacto_id'   => $request->input('contacto_id'),
+            'telefono'      => $request->input('telefono'),
+            'tipo'          => $request->input('tipo'),
+        ]);
+
+        return $telefono;
     }
 
     /**

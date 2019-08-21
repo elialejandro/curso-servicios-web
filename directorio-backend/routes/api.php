@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::apiResource('calculadora', 'Api\CalculadoraController');
 Route::apiResource('contactos', 'Api\ContactosController');
+Route::apiResource('telefonos', 'Api\TelefonosController');
