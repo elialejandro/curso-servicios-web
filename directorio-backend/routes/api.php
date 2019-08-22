@@ -17,6 +17,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('calculadora', 'Api\CalculadoraController');
-Route::apiResource('contactos', 'Api\ContactosController');
-Route::apiResource('telefonos', 'Api\TelefonosController');
+Route::apiResource('calculadora', 'Api\CalculadoraController')
+    ->middleware('auth:api');
+
+Route::middleware(['auth:api'])->group(function() {
+
+    Route::apiResource('contactos', 'Api\ContactosController');
+    Route::apiResource('telefonos', 'Api\TelefonosController');
+
+});
+
